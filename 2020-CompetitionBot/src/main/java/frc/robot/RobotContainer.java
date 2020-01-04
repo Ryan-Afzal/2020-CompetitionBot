@@ -32,7 +32,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
+    this.configureButtonBindings();
   }
 
   /**
@@ -42,6 +42,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    
   }
 
 
