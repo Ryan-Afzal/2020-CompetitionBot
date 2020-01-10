@@ -8,11 +8,11 @@ public class Robot extends TimedRobot {
 
 	private Command autonomousCommand;
 
-	private IRobotContainer robotContainer;
+	private RobotContainer robotContainer;
 
 	@Override
 	public void robotInit() {
-		this.robotContainer = new TestRobotContainer();
+		this.robotContainer = new RobotContainer();
 	}
 
 	@Override

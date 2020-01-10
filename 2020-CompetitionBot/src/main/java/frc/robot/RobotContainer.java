@@ -1,29 +1,31 @@
 package frc.robot;
 
-import frc.robot.subsystems.ColorSensorSubsystem;
-import frc.robot.subsystems.ColorSensorTestSubsystem;
-import frc.robot.subsystems.PneumaticsTestSubsystem;
+import static frc.robot.Constants.*;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
-/**
- * This class is where the bulk of the robot should be declared.	Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).	Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
- */
-public class RobotContainer implements IRobotContainer {
-	
-	//private final ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
+@SuppressWarnings("unused")
+public class RobotContainer {
 
-	private final ColorSensorTestSubsystem colorSensorTestSubsystem = new ColorSensorTestSubsystem();
-	private final PneumaticsTestSubsystem pneumaticsTestSubsystem = new PneumaticsTestSubsystem();
+	private final Joystick driveHid = new Joystick(DRIVE_HID_PORT);
+	private final Joystick operatorHid = new Joystick(OPERATOR_HID_PORT);
+
+	private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(this.driveHid);
+	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+
+	private final IntakeCommand intakeCommand = new IntakeCommand(this.intakeSubsystem);
 
 	public RobotContainer() {
 		this.configureButtonBindings();
 	}
 	
 	private void configureButtonBindings() {
-		
+		new JoystickButton(this.driveHid, INTAKE_BUTTON)
+			.whileHeld(this.intakeCommand);
 	}
 
 	public Command getAutonomousCommand() {
