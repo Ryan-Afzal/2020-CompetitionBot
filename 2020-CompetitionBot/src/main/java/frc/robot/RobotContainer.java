@@ -11,8 +11,8 @@ import frc.robot.subsystems.*;
 @SuppressWarnings("unused")
 public class RobotContainer {
 
-	private final Joystick driveHid = new Joystick(DRIVE_HID_PORT);
-	private final Joystick operatorHid = new Joystick(OPERATOR_HID_PORT);
+	private final Joystick driveHid = new Joystick(DRIVE_HID);
+	private final Joystick operatorHid = new Joystick(OPERATOR_HID);
 
 	private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(this.driveHid);
 	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
