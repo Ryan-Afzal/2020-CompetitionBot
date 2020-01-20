@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import static frc.robot.Constants.*;
 import com.ctre.phoenix.motorcontrol.can.*;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -18,6 +20,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
     private final WPI_TalonSRX r1 = new WPI_TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX r2 = new WPI_TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
+
+    private final Encoder e1 = new Encoder(0, 1);
     
     private final SpeedControllerGroup leftControllerGroup = new SpeedControllerGroup(l1, l2);
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
@@ -45,6 +49,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
+        System.out.println(e1.getDistance());
         double forwardBack = this.driveHid.getY();
         double leftRight = this.driveHid.getX();
 
