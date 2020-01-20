@@ -16,7 +16,6 @@ public class RobotContainer {
 	private final GenericHID operatorHid = new Joystick(OPERATOR_HID);
 
 	private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(this.driveHid);
-	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
 	//private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
 	//private final IntakeCommand intakeCommand = new IntakeCommand(this.intakeSubsystem);

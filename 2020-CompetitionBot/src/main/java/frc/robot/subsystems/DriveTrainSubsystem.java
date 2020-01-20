@@ -1,9 +1,8 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.*;
-
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,10 +13,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
-    private final PWMVictorSPX l1 = new PWMVictorSPX(LEFT_FRONT_DRIVE_MOTOR);
-    private final PWMVictorSPX l2 = new PWMVictorSPX(LEFT_BACK_DRIVE_MOTOR);
-    private final PWMVictorSPX r1 = new PWMVictorSPX(RIGHT_FRONT_DRIVE_MOTOR);
-    private final PWMVictorSPX r2 = new PWMVictorSPX(RIGHT_BACK_DRIVE_MOTOR);
+    private final TalonSRX l1 = new TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
+    private final TalonSRX l2 = new TalonSRX(LEFT_BACK_DRIVE_MOTOR);
+    private final TalonSRX r1 = new TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
+    private final TalonSRX r2 = new TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
     
     private final SpeedControllerGroup leftControllerGroup = new SpeedControllerGroup(l1, l2);
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
@@ -32,6 +31,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
      */
     public DriveTrainSubsystem(GenericHID driveHid) {
         this.driveHid = driveHid;
+    }
+
+    /**
+     * Arcade the {@link DriveTrainSubsystem} using the provided values.
+     * @param forwardBack The speed along the x-axis [-1.0, 1.0]. Forward is positive.
+     * @param leftRight The rotation rate along the z-axis [-1.0, 1.0]. Clockwise is positive.
+     */
+    public void arcadeDrive(double forwardBack, double leftRight) {
+        this.differentialDrive.arcadeDrive(forwardBack, leftRight);
     }
 
     @Override
