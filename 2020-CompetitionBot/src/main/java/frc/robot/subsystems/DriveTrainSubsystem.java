@@ -1,8 +1,9 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.*;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -13,16 +14,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
-    private final TalonSRX l1 = new TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
-    private final TalonSRX l2 = new TalonSRX(LEFT_BACK_DRIVE_MOTOR);
-    private final TalonSRX r1 = new TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
-    private final TalonSRX r2 = new TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
+    private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
+    private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
+    private final WPI_TalonSRX r1 = new WPI_TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
+    private final WPI_TalonSRX r2 = new WPI_TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
     
     private final SpeedControllerGroup leftControllerGroup = new SpeedControllerGroup(l1, l2);
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
-
+    
     private final DifferentialDrive differentialDrive = new DifferentialDrive(this.leftControllerGroup, this.rightControllerGroup);
-
+    
     private final GenericHID driveHid;
 
     /**
