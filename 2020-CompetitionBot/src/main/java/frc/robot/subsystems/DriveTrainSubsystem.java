@@ -14,6 +14,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
+    /**
+     * The coefficient used when arcading the motors.
+     */
+    public static final double MOTOR_COEFFICIENT_FORWARDBACK = 1.0;
+
+    /**
+     * The coefficient used when arcading the motors.
+     */
+    public static final double MOTOR_COEFFICIENT_LEFTRIGHT = 1.0;
+
     private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
     private final WPI_TalonSRX r1 = new WPI_TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
@@ -40,7 +50,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
      * @param leftRight The rotation rate along the z-axis [-1.0, 1.0]. Clockwise is positive.
      */
     public void arcadeDrive(double forwardBack, double leftRight) {
-        this.differentialDrive.arcadeDrive(forwardBack, leftRight);
+        this.differentialDrive.arcadeDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
         double forwardBack = this.driveHid.getY();
         double leftRight = this.driveHid.getX();
 
-        this.differentialDrive.arcadeDrive(forwardBack, leftRight);
+        this.arcadeDrive(forwardBack, leftRight);
     }
     
 }
