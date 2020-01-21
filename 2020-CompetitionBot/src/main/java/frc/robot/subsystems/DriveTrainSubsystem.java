@@ -22,6 +22,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
     private final WPI_TalonSRX r2 = new WPI_TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
 
     private final Encoder e1 = new Encoder(0, 1);
+    private final Encoder e2 = new Encoder(3,2);
     
     private final SpeedControllerGroup leftControllerGroup = new SpeedControllerGroup(l1, l2);
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
@@ -49,7 +50,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        System.out.println(e1.getDistance());
+        //System.out.println(e2.get());
         double forwardBack = this.driveHid.getY();
         double leftRight = this.driveHid.getX();
 
