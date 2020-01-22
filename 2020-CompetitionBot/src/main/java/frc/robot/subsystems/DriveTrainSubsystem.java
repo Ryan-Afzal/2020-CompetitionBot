@@ -18,12 +18,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
-    private class DriveTrainDefaultCommand extends CommandBase {
+    private class DriveTrainArcadeCommand extends CommandBase {
         
         private final DriveTrainSubsystem driveTrainSubsystem;
         private final GenericHID driveHid;
 
-        public DriveTrainDefaultCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID driveHid) {
+        public DriveTrainArcadeCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID driveHid) {
             this.driveTrainSubsystem = driveTrainSubsystem;
             this.driveHid = driveHid;
         }
@@ -43,15 +43,48 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     }
 
+    private class DriveTrainTankCommand extends CommandBase {
+        
+        private final DriveTrainSubsystem driveTrainSubsystem;
+        
+        private final GenericHID leftHid;
+        private final GenericHID rightHid;
+
+        public DriveTrainTankCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID leftHid, GenericHID rightHid) {
+            this.driveTrainSubsystem = driveTrainSubsystem;
+            this.leftHid = leftHid;
+            this.rightHid = rightHid;
+        }
+
+        @Override
+        public void execute() {
+            double left = this.leftHid.getY();
+            double right = this.rightHid.getY();
+
+            this.driveTrainSubsystem.tankDrive(left, right);
+        }
+
+        @Override
+        public void end(boolean interrupted) {
+            this.driveTrainSubsystem.tankDrive(0.0, 0.0);
+        }
+
+    }
+
     /**
-     * The coefficient used when arcading the motors.
+     * A coefficient used when using arcade drive.
      */
     public static final double MOTOR_COEFFICIENT_FORWARDBACK = 1.0;
 
     /**
-     * The coefficient used when arcading the motors.
+     * A coefficient used when using arcade drive.
      */
     public static final double MOTOR_COEFFICIENT_LEFTRIGHT = 1.0;
+
+    /**
+     * The coefficient used when using tank drive.
+     */
+    public static final double MOTOR_COEFFICIENT_TANK = 1.0;
 
     private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
@@ -78,6 +111,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
         this.driveHid = driveHid;
     }
 
+    /**
+     * Construct an instance of the drivetrain.
+     * @param hid1
+     * @param hid2
+     */
     public DriveTrainSubsystem(GenericHID hid1, GenericHID hid2) {
         this.driveHid = hid1;
         this.driveHid2 = hid2;
@@ -92,22 +130,24 @@ public class DriveTrainSubsystem extends SubsystemBase {
         this.differentialDrive.arcadeDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
     }
 
+    /**
+     * Tank the {@link DriveTrainSubsystem} using the provided values.
+     * @param left The speed of the left side [-1.0, 1.0]. Forward is positive.
+     * @param right The speed of the right side [-1.0, 1.0]. Forward is positive.
+     */
     public void tankDrive(double left, double right) {
-        this.differentialDrive.tankDrive(left, right);
+        this.differentialDrive.tankDrive(MOTOR_COEFFICIENT_TANK * left, MOTOR_COEFFICIENT_TANK * right);
     }
 
     @Override
     public void periodic() {
-        double left = this.driveHid.getY();
-        double right = this.driveHid2.getY();
-
-        this.tankDrive(left, right);
+        // Do Nothing
     }
 
     @Override
     public Command getDefaultCommand() {
-        //return new DriveTrainDefaultCommand(this, this.driveHid);
-        return null;
+        return new DriveTrainArcadeCommand(this, this.driveHid);
+        //return new DriveTrainTankCommand(this, this.driveHid, this.driveHid2)
     }
     
 }
