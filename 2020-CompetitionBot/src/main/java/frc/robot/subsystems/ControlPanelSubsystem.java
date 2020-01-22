@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
@@ -29,6 +30,10 @@ public class ControlPanelSubsystem extends SubsystemBase {
 		throw new UnsupportedOperationException();
 	}
 
+	public boolean areWheelsExtended() {
+		throw new UnsupportedOperationException();
+	}
+
 	public void startWheels() {
 		this.setWheels(MOTOR_SPEED * GEAR_REDUCTION);
 	}
@@ -38,6 +43,18 @@ public class ControlPanelSubsystem extends SubsystemBase {
 	}
 
 	private void setWheels(double speed) {
+		throw new UnsupportedOperationException();
+	}
+
+	public Color getTargetColor() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Color getLeftSensorColor() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Color getRightSensorColor() {
 		throw new UnsupportedOperationException();
 	}
 
