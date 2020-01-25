@@ -21,11 +21,9 @@ public class ControlPanelRotateToColorCommand extends CommandBase {
 
 	@Override
 	public void execute() {
-		var color = this.controlPanelSubsystem.getTargetColor();
-
 		if (!this.isFinished) {
-			this.isFinished = this.controlPanelSubsystem.getLeftSensorColor().equals(color)
-				&& this.controlPanelSubsystem.getRightSensorColor().equals(color);
+			this.isFinished = this.controlPanelSubsystem.getSensorColor()
+				.equals(this.controlPanelSubsystem.getTargetColor());
 		}
 	}
 

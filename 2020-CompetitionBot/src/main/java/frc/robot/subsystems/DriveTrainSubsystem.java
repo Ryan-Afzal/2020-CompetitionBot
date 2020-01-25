@@ -4,7 +4,6 @@ import static frc.robot.Constants.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -17,59 +16,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  * It takes a single {@link GenericHID} and uses its Y and X values for Forward/Back and Left/Right, respectively.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
-
-    private class DriveTrainArcadeCommand extends CommandBase {
-        
-        private final DriveTrainSubsystem driveTrainSubsystem;
-        private final GenericHID driveHid;
-
-        public DriveTrainArcadeCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID driveHid) {
-            this.driveTrainSubsystem = driveTrainSubsystem;
-            this.driveHid = driveHid;
-        }
-
-        @Override
-        public void execute() {
-            double forwardBack = this.driveHid.getY();
-            double leftRight = this.driveHid.getX();
-
-            this.driveTrainSubsystem.arcadeDrive(forwardBack, leftRight);
-        }
-
-        @Override
-        public void end(boolean interrupted) {
-            this.driveTrainSubsystem.arcadeDrive(0.0, 0.0);
-        }
-
-    }
-
-    private class DriveTrainTankCommand extends CommandBase {
-        
-        private final DriveTrainSubsystem driveTrainSubsystem;
-        
-        private final GenericHID leftHid;
-        private final GenericHID rightHid;
-
-        public DriveTrainTankCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID leftHid, GenericHID rightHid) {
-            this.driveTrainSubsystem = driveTrainSubsystem;
-            this.leftHid = leftHid;
-            this.rightHid = rightHid;
-        }
-
-        @Override
-        public void execute() {
-            double left = this.leftHid.getY();
-            double right = this.rightHid.getY();
-
-            this.driveTrainSubsystem.tankDrive(left, right);
-        }
-
-        @Override
-        public void end(boolean interrupted) {
-            this.driveTrainSubsystem.tankDrive(0.0, 0.0);
-        }
-
-    }
 
     /**
      * A coefficient used when using arcade drive.
@@ -98,27 +44,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
     
     private final DifferentialDrive differentialDrive = new DifferentialDrive(this.leftControllerGroup, this.rightControllerGroup);
-    
-    private final GenericHID driveHid;
-
-    private GenericHID driveHid2;
 
     /**
      * Contruct an instance of the drivetrain.
-     * @param driveHid The HID that provides input to the drivetrain.
      */
-    public DriveTrainSubsystem(GenericHID driveHid) {
-        this.driveHid = driveHid;
-    }
+    public DriveTrainSubsystem() {
 
-    /**
-     * Construct an instance of the drivetrain.
-     * @param hid1
-     * @param hid2
-     */
-    public DriveTrainSubsystem(GenericHID hid1, GenericHID hid2) {
-        this.driveHid = hid1;
-        this.driveHid2 = hid2;
     }
 
     /**
@@ -128,26 +59,6 @@ public class DriveTrainSubsystem extends SubsystemBase {
      */
     public void arcadeDrive(double forwardBack, double leftRight) {
         this.differentialDrive.arcadeDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
-    }
-
-    /**
-     * Tank the {@link DriveTrainSubsystem} using the provided values.
-     * @param left The speed of the left side [-1.0, 1.0]. Forward is positive.
-     * @param right The speed of the right side [-1.0, 1.0]. Forward is positive.
-     */
-    public void tankDrive(double left, double right) {
-        this.differentialDrive.tankDrive(MOTOR_COEFFICIENT_TANK * left, MOTOR_COEFFICIENT_TANK * right);
-    }
-
-    @Override
-    public void periodic() {
-        // Do Nothing
-    }
-
-    @Override
-    public Command getDefaultCommand() {
-        return new DriveTrainArcadeCommand(this, this.driveHid);
-        //return new DriveTrainTankCommand(this, this.driveHid, this.driveHid2)
     }
     
 }

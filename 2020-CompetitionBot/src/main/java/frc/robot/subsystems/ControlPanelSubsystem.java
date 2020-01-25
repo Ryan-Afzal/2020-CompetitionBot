@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -17,6 +20,8 @@ public class ControlPanelSubsystem extends SubsystemBase {
 	 * The gear reduction for the motors controlling the wheels
 	 */
 	private static final double GEAR_REDUCTION = 1.0;
+
+	private final ColorSensorV3 colorSensor = new ColorSensorV3(I2C.Port.kOnboard);
 
 	public ControlPanelSubsystem() {
 		
@@ -50,12 +55,8 @@ public class ControlPanelSubsystem extends SubsystemBase {
 		throw new UnsupportedOperationException();
 	}
 
-	public Color getLeftSensorColor() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Color getRightSensorColor() {
-		throw new UnsupportedOperationException();
+	public Color getSensorColor() {
+		return this.colorSensor.getColor();
 	}
 
 }

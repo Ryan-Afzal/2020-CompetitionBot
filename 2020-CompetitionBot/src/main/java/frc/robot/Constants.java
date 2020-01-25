@@ -8,6 +8,10 @@ public final class Constants {
 	public static final int OPERATOR_HID = 1;
 
 	public static final int INTAKE_BUTTON = -1;
+	public static final int MOVE_CONVEYOR_BUTTON = -1;
+	public static final int SHOOT_BUTTON = -1;
+	public static final int CONTROL_PANEL_ROTATE_TO_COLOR_BUTTON = -1;
+	public static final int CONTROL_PANEL_FULL_ROTATION_BUTTON = -1;
 
 	/*
 	 * CAN IDs
