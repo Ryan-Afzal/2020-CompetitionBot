@@ -27,18 +27,13 @@ public class DriveTrainSubsystem extends SubsystemBase {
      */
     public static final double MOTOR_COEFFICIENT_LEFTRIGHT = 1.0;
 
-    /**
-     * The coefficient used when using tank drive.
-     */
-    public static final double MOTOR_COEFFICIENT_TANK = 1.0;
-
     private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
     private final WPI_TalonSRX r1 = new WPI_TalonSRX(RIGHT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX r2 = new WPI_TalonSRX(RIGHT_BACK_DRIVE_MOTOR);
 
-    private final Encoder e1 = new Encoder(0, 1);
-    private final Encoder e2 = new Encoder(3,2);
+    //private final Encoder e1 = new Encoder(0, 1);
+    //private final Encoder e2 = new Encoder(3,2);
     
     private final SpeedControllerGroup leftControllerGroup = new SpeedControllerGroup(l1, l2);
     private final SpeedControllerGroup rightControllerGroup = new SpeedControllerGroup(r1, r2);
