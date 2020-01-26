@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
+/**
+ * Default command for the {@link DriveTrainSubsystem}, which arcades the drive using a {@link GenericHID}.
+ */
 public class DriveTrainDefaultCommand extends CommandBase {
         
     private final DriveTrainSubsystem driveTrainSubsystem;

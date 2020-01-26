@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
  * Drivetrain subsystem that uses an Arcade Drive.
- * It takes a single {@link GenericHID} and uses its Y and X values for Forward/Back and Left/Right, respectively.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
