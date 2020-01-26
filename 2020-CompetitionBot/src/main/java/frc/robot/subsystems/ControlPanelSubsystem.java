@@ -51,6 +51,10 @@ public class ControlPanelSubsystem extends SubsystemBase {
 		throw new UnsupportedOperationException();
 	}
 
+	public int getTargetRotations() {
+		return 3;
+	}
+
 	public Color getTargetColor() {
 		throw new UnsupportedOperationException();
 	}

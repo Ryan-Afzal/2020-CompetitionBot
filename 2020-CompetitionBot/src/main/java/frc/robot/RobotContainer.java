@@ -42,16 +42,28 @@ public class RobotContainer {
 		new JoystickButton(this.operatorHid, SHOOT_BUTTON)
 			.whileHeld(new ShootCommand(this.shootSubsystem));
 		
-		// Control Panel
+		// Control Panel Full Rotations
+		new JoystickButton(this.operatorHid, CONTROL_PANEL_FULL_ROTATION_BUTTON)
+			.whenPressed(new SequentialCommandGroup(
+				new RunCommand(() -> {
+					this.controlPanelSubsystem.extendWheels();
+				}, this.controlPanelSubsystem),
+				new ControlPanelRotateCommand(this.controlPanelSubsystem),
+				new RunCommand(() -> {
+					this.controlPanelSubsystem.retractWheels();
+				}, this.controlPanelSubsystem)
+			));
+
+		// Control Panel Rotate to Color
 		new JoystickButton(this.operatorHid, CONTROL_PANEL_ROTATE_TO_COLOR_BUTTON)
 			.whenPressed(new SequentialCommandGroup(
 				new RunCommand(() -> {
 					this.controlPanelSubsystem.extendWheels();
-				}),
+				}, this.controlPanelSubsystem),
 				new ControlPanelRotateToColorCommand(this.controlPanelSubsystem),
 				new RunCommand(() -> {
 					this.controlPanelSubsystem.retractWheels();
-				})
+				}, this.controlPanelSubsystem)
 			));
 	}
 

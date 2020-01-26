@@ -12,6 +12,7 @@ public class ControlPanelRotateToColorCommand extends CommandBase {
 	public ControlPanelRotateToColorCommand(ControlPanelSubsystem controlPanelSubsystem) {
 		this.controlPanelSubsystem = controlPanelSubsystem;
 		this.isFinished = false;
+		this.addRequirements(this.controlPanelSubsystem);
 	}
 
 	@Override
