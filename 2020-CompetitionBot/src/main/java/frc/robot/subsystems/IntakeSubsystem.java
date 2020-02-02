@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
 
-    private final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(INTAKE_MOTOR);
+    //private final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(INTAKE_MOTOR);
 
     private final DoubleSolenoid intakeSolenoid = new DoubleSolenoid(INTAKE_DEPLOY, INTAKE_RETRACT);
 
@@ -30,11 +30,11 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void startIntake() {
-        this.intakeMotor.set(1.0);
+        //this.intakeMotor.set(0.1);
     }
 
     public void stopIntake() {
-        this.intakeMotor.set(0.0);
+        //this.intakeMotor.set(0.0);
     }
 
 }
