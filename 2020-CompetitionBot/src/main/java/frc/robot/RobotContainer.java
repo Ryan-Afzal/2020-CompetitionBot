@@ -16,6 +16,7 @@ public class RobotContainer {
 
 	//private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
 	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+	private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	//private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 	//private final ShootSubsystem shootSubsystem = new ShootSubsystem();
 	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
@@ -30,11 +31,18 @@ public class RobotContainer {
 	}
 	
 	private void configureButtonBindings() {
-		/*
+		
 		// Intake
 		new JoystickButton(this.operatorHid, TOGGLE_INTAKE_BUTTON)
 			.whenPressed(new ToggleIntakeCommand(this.intakeSubsystem));
 		
+		// Climb
+		new JoystickButton(this.operatorHid, TOGGLE_CLIMB_BUTTON)
+			.whenPressed(new InstantCommand(() -> {
+				this.climbSubsystem.toggleClimbDeploy();
+			}, this.climbSubsystem));
+		
+		/*
 		new JoystickButton(this.operatorHid, INTAKE_BUTTON)
 			.whileHeld(new IntakeCommand(this.intakeSubsystem));
 
@@ -74,5 +82,10 @@ public class RobotContainer {
 
 	public Command getAutonomousCommand() {
 		return null;
+	}
+
+	public void disable() {
+		this.intakeSubsystem.stopIntakeDeploy();
+		this.climbSubsystem.stopClimbDeploy();
 	}
 }
