@@ -12,7 +12,7 @@ public final class Constants {
 	
 	public static final int MOVE_CONVEYOR_BUTTON = -1;
 	
-	public static final int SHOOT_BUTTON = -1;
+	public static final int SHOOT_BUTTON = 1;
 
 	public static final int TOGGLE_CLIMB_BUTTON = -1;
 

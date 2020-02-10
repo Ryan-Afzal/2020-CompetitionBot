@@ -11,14 +11,14 @@ import frc.robot.subsystems.*;
 
 public class RobotContainer {
 
-	private final GenericHID driveHid = new Joystick(DRIVE_HID);
+	//private final GenericHID driveHid = new Joystick(DRIVE_HID);
 	private final GenericHID operatorHid = new Joystick(OPERATOR_HID);
 
 	//private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
-	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-	private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
+	//private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+	//private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	//private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
-	//private final ShootSubsystem shootSubsystem = new ShootSubsystem();
+	private final ShootSubsystem shootSubsystem = new ShootSubsystem();
 	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
 
 	public RobotContainer() {
@@ -31,7 +31,7 @@ public class RobotContainer {
 	}
 	
 	private void configureButtonBindings() {
-		
+		/*
 		// Intake
 		new JoystickButton(this.operatorHid, TOGGLE_INTAKE_BUTTON)
 			.whenPressed(new ToggleIntakeCommand(this.intakeSubsystem));
@@ -42,18 +42,18 @@ public class RobotContainer {
 				this.climbSubsystem.toggleClimbDeploy();
 			}, this.climbSubsystem));
 		
-		/*
+		
 		new JoystickButton(this.operatorHid, INTAKE_BUTTON)
 			.whileHeld(new IntakeCommand(this.intakeSubsystem));
 
 		// Conveyor
 		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_BUTTON)
 			.whileHeld(new MoveConveyorCommand(this.conveyorSubsystem));
-		
+		*/
 		// Shoot
 		new JoystickButton(this.operatorHid, SHOOT_BUTTON)
 			.whileHeld(new ShootCommand(this.shootSubsystem));
-		
+		/*
 		// Control Panel Full Rotations
 		new JoystickButton(this.operatorHid, CONTROL_PANEL_FULL_ROTATION_BUTTON)
 			.whenPressed(new SequentialCommandGroup(
@@ -85,7 +85,7 @@ public class RobotContainer {
 	}
 
 	public void disable() {
-		this.intakeSubsystem.stopIntakeDeploy();
-		this.climbSubsystem.stopClimbDeploy();
+		//this.intakeSubsystem.stopIntakeDeploy();
+		//this.climbSubsystem.stopClimbDeploy();
 	}
 }
