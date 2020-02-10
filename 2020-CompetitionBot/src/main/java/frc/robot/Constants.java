@@ -22,8 +22,11 @@ public final class Constants {
 	/*
 	 * Pneumatic Ports
 	 */
-	public static final int INTAKE_DEPLOY = 0;
-	public static final int INTAKE_RETRACT = 1;
+	public static final int INTAKE_DEPLOY_LEFT = 0;
+	public static final int INTAKE_RETRACT_LEFT = 1;
+
+	public static final int INTAKE_DEPLOY_RIGHT = 2;
+	public static final int INTAKE_RETRACT_RIGHT = 3;
 
 	public static final int CLIMB_DEPLOY = 6;
 	public static final int CLIMB_RETRACT = 7;
