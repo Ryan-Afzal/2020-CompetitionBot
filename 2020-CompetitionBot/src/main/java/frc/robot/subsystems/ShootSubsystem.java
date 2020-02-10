@@ -15,7 +15,7 @@ public class ShootSubsystem extends SubsystemBase {
 
     public void startShoot() {
         System.out.println("startShoot() called");
-        this.shootMotor.set(-0.8);
+        this.shootMotor.set(-0.65);
     }
 
     public void stopShoot() {
