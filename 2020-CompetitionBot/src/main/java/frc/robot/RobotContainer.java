@@ -11,14 +11,14 @@ import frc.robot.subsystems.*;
 
 public class RobotContainer {
 
-	//private final GenericHID driveHid = new Joystick(DRIVE_HID);
+	private final GenericHID driveHid = new Joystick(DRIVE_HID);
 	private final GenericHID operatorHid = new Joystick(OPERATOR_HID);
 
-	//private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
-	//private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-	//private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
-	//private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
+	private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
+	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+	private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 	private final ShootSubsystem shootSubsystem = new ShootSubsystem();
+	//private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
 
 	public RobotContainer() {
@@ -27,20 +27,13 @@ public class RobotContainer {
 	}
 
 	private void configureDefaultCommands() {
-		//this.driveTrain.setDefaultCommand(new DriveTrainDefaultCommand(this.driveTrain, this.driveHid));
+		this.driveTrain.setDefaultCommand(new DriveTrainDefaultCommand(this.driveTrain, this.driveHid));
 	}
 	
 	private void configureButtonBindings() {
-		/*
 		// Intake
 		new JoystickButton(this.operatorHid, TOGGLE_INTAKE_BUTTON)
 			.whenPressed(new ToggleIntakeCommand(this.intakeSubsystem));
-		
-		// Climb
-		new JoystickButton(this.operatorHid, TOGGLE_CLIMB_BUTTON)
-			.whenPressed(new InstantCommand(() -> {
-				this.climbSubsystem.toggleClimbDeploy();
-			}, this.climbSubsystem));
 		
 		
 		new JoystickButton(this.operatorHid, INTAKE_BUTTON)
@@ -49,11 +42,18 @@ public class RobotContainer {
 		// Conveyor
 		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_BUTTON)
 			.whileHeld(new MoveConveyorCommand(this.conveyorSubsystem));
-		*/
+		
 		// Shoot
 		new JoystickButton(this.operatorHid, SHOOT_BUTTON)
 			.whileHeld(new ShootCommand(this.shootSubsystem));
+
 		/*
+		// Climb
+		new JoystickButton(this.operatorHid, TOGGLE_CLIMB_BUTTON)
+			.whenPressed(new InstantCommand(() -> {
+				this.climbSubsystem.toggleClimbDeploy();
+			}, this.climbSubsystem));
+		
 		// Control Panel Full Rotations
 		new JoystickButton(this.operatorHid, CONTROL_PANEL_FULL_ROTATION_BUTTON)
 			.whenPressed(new SequentialCommandGroup(
