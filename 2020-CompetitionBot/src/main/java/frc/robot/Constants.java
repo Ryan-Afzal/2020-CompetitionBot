@@ -7,12 +7,17 @@ public final class Constants {
 	public static final int DRIVE_HID = 0;
 	public static final int OPERATOR_HID = 1;
 
-	public static final int TOGGLE_INTAKE_BUTTON = -1;
-	public static final int INTAKE_BUTTON = -1;
+	public static final int TOGGLE_INTAKE_BUTTON = 12;
+	public static final int INTAKE_BUTTON = 11;
+	public static final int JAM_BUTTON = 9;
 	
-	public static final int MOVE_CONVEYOR_BUTTON = -1;
+	public static final int MOVE_CONVEYOR_BUTTON = 1;
 	
-	public static final int SHOOT_BUTTON = 1;
+	public static final int SHOOT_BUTTON = 2;
+
+	/*
+	 * Unused
+	 */
 
 	public static final int TOGGLE_CLIMB_BUTTON = -1;
 
@@ -27,6 +32,10 @@ public final class Constants {
 
 	public static final int INTAKE_DEPLOY_RIGHT = 2;
 	public static final int INTAKE_RETRACT_RIGHT = 3;
+
+	/*
+	 * Unused
+	 */
 
 	public static final int CLIMB_DEPLOY = 6;
 	public static final int CLIMB_RETRACT = 7;
