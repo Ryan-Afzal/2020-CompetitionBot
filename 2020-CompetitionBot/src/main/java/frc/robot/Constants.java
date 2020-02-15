@@ -39,7 +39,8 @@ public final class Constants {
 	public static final int RIGHT_BACK_DRIVE_MOTOR = 14;
 	public static final int RIGHT_FRONT_DRIVE_MOTOR = 15;
 	public static final int SHOOT_MOTOR = 16;
-	public static final int CONVEYOR_MOTOR = 17;
-	public static final int INTAKE_MOTOR = 18;
+	public static final int FRONT_CONVEYOR_MOTOR = 17;
+	public static final int BACK_CONVEYOR_MOTOR = 18;
+	public static final int INTAKE_MOTOR = 19;
 
 }
