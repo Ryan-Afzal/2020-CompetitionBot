@@ -84,8 +84,8 @@ public class RobotContainer {
 		return null;
 	}
 
-	public void disable() {
-		//this.intakeSubsystem.stopIntakeDeploy();
+	public void onDisable() {
+		this.intakeSubsystem.stopIntakeDeploy();
 		//this.climbSubsystem.stopClimbDeploy();
 	}
 }
