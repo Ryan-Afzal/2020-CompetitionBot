@@ -18,8 +18,6 @@ public class RobotContainer {
 	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 	private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 	private final ShootSubsystem shootSubsystem = new ShootSubsystem();
-	//private final ClimbSubsystem climbSubsystem = new ClimbSubsystem();
-	//private final ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
 
 	public RobotContainer() {
 		this.configureDefaultCommands();
@@ -46,38 +44,6 @@ public class RobotContainer {
 		// Shoot
 		new JoystickButton(this.operatorHid, SHOOT_BUTTON)
 			.whileHeld(new ShootCommand(this.shootSubsystem));
-
-		/*
-		// Climb
-		new JoystickButton(this.operatorHid, TOGGLE_CLIMB_BUTTON)
-			.whenPressed(new InstantCommand(() -> {
-				this.climbSubsystem.toggleClimbDeploy();
-			}, this.climbSubsystem));
-		
-		// Control Panel Full Rotations
-		new JoystickButton(this.operatorHid, CONTROL_PANEL_FULL_ROTATION_BUTTON)
-			.whenPressed(new SequentialCommandGroup(
-				new InstantCommand(() -> {
-					this.controlPanelSubsystem.extendWheels();
-				}, this.controlPanelSubsystem),
-				new ControlPanelRotateCommand(this.controlPanelSubsystem),
-				new InstantCommand(() -> {
-					this.controlPanelSubsystem.retractWheels();
-				}, this.controlPanelSubsystem)
-			));
-
-		// Control Panel Rotate to Color
-		new JoystickButton(this.operatorHid, CONTROL_PANEL_ROTATE_TO_COLOR_BUTTON)
-			.whenPressed(new SequentialCommandGroup(
-				new InstantCommand(() -> {
-					this.controlPanelSubsystem.extendWheels();
-				}, this.controlPanelSubsystem),
-				new ControlPanelRotateToColorCommand(this.controlPanelSubsystem),
-				new InstantCommand(() -> {
-					this.controlPanelSubsystem.retractWheels();
-				}, this.controlPanelSubsystem)
-			));
-		*/
 	}
 
 	public Command getAutonomousCommand() {
@@ -86,6 +52,5 @@ public class RobotContainer {
 
 	public void onDisable() {
 		this.intakeSubsystem.stopIntakeDeploy();
-		//this.climbSubsystem.stopClimbDeploy();
 	}
 }
