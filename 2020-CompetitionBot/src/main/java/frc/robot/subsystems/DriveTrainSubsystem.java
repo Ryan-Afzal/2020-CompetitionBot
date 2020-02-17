@@ -53,7 +53,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
      * @param leftRight The rotation rate along the z-axis [-1.0, 1.0]. Clockwise is positive.
      */
     public void arcadeDrive(double forwardBack, double leftRight) {
-        this.differentialDrive.arcadeDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
+        this.differentialDrive.arcadeDrive(-1 * MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
     }
 
     /**
