@@ -19,7 +19,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
      public static final double DISTANCE_PER_PULSE = (19.25 * Math.PI) / 200;
 
     public static final double MOTOR_COEFFICIENT_FORWARDBACK = 1.0;
-    public static final double MOTOR_COEFFICIENT_LEFTRIGHT = 1.0;
+    public static final double MOTOR_COEFFICIENT_LEFTRIGHT = -1.0;
 
     private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
@@ -50,13 +50,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
         
     }
 
-    /**
-     * Arcade the {@link DriveTrainSubsystem} using the provided values.
-     * @param forwardBack The speed along the x-axis [-1.0, 1.0]. Forward is positive.
-     * @param leftRight The rotation rate along the z-axis [-1.0, 1.0]. Clockwise is positive.
-     */
     public void arcadeDrive(double forwardBack, double leftRight) {
         this.differentialDrive.arcadeDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight);
+    }
+
+    public void curvatureDrive(double forwardBack, double leftRight, boolean quickTurn) {
+        this.differentialDrive.curvatureDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight, quickTurn);
     }
 
     /**

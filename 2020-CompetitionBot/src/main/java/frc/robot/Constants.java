@@ -4,8 +4,11 @@ public final class Constants {
 	/*
 	 * User Interface (Joysticks and Buttons)
 	 */
-	public static final int DRIVE_HID = 0;
-	public static final int OPERATOR_HID = 1;
+	public static final int DRIVE_HID_1 = 0;
+	public static final int DRIVE_HID_2 = 1;
+	public static final int OPERATOR_HID = 2;
+
+	public static final int QUICKTURN_BUTTON = 1;
 
 	public static final int TOGGLE_INTAKE_BUTTON = 12;
 	public static final int INTAKE_BUTTON = 11;

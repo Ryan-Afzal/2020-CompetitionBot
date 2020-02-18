@@ -11,7 +11,8 @@ import frc.robot.subsystems.*;
 
 public class RobotContainer {
 
-	private final GenericHID driveHid = new Joystick(DRIVE_HID);
+	private final GenericHID driveHid1 = new Joystick(DRIVE_HID_1);
+	private final GenericHID driveHid2 = new Joystick(DRIVE_HID_2);
 	private final GenericHID operatorHid = new Joystick(OPERATOR_HID);
 
 	private final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
@@ -26,7 +27,8 @@ public class RobotContainer {
 	}
 
 	private void configureDefaultCommands() {
-		this.driveTrain.setDefaultCommand(new DriveTrainDefaultCommand(this.driveTrain, this.driveHid));
+		//this.driveTrain.setDefaultCommand(new DriveTrainArcadeDefaultCommand(this.driveTrain, this.driveHid1));
+		this.driveTrain.setDefaultCommand(new DriveTrainCurvatureDefaultCommand(this.driveTrain, this.driveHid1, this.driveHid2));
 	}
 	
 	private void configureButtonBindings() {

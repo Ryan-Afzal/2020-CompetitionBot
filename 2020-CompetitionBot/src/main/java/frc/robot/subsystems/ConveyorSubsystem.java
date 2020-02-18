@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ConveyorSubsystem extends SubsystemBase {
 
+    private static final double MOTOR_SPEED = 0.5;
+
     private final WPI_TalonSRX conveyorMotorFront = new WPI_TalonSRX(FRONT_CONVEYOR_MOTOR);
     private final WPI_TalonSRX conveyorMotorBack = new WPI_TalonSRX(BACK_CONVEYOR_MOTOR);
 
@@ -19,11 +21,11 @@ public class ConveyorSubsystem extends SubsystemBase {
     }
 
     public void startConveyor() {
-        this.motors.set(1.0);
+        this.motors.set(MOTOR_SPEED);
     }
 
     public void startConveyorReverse() {
-        this.motors.set(-1.0);
+        this.motors.set(-MOTOR_SPEED);
     }
 
     public void stopConveyor() {

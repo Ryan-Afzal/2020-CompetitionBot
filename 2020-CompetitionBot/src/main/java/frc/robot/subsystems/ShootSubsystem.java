@@ -12,7 +12,7 @@ public class ShootSubsystem extends SubsystemBase {
     private double speed;
 
     public ShootSubsystem() {
-        this.speed = -0.65;
+        this.speed = -0.85;
     }
 
     public double getSpeed() {
