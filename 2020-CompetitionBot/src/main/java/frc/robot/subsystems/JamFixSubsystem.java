@@ -11,7 +11,7 @@ public class JamFixSubsystem extends SubsystemBase {
 	private final WPI_TalonSRX motor = new WPI_TalonSRX(JAM_FIX_MOTOR);
 
 	public JamFixSubsystem() {
-
+		this.motor.setInverted(true);
 	}
 
 	public void startFix() {
