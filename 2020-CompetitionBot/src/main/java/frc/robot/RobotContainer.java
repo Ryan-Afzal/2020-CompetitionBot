@@ -18,6 +18,7 @@ public class RobotContainer {
 	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 	private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 	private final ShootSubsystem shootSubsystem = new ShootSubsystem();
+	private final JamFixSubsystem jamFixSubsystem = new JamFixSubsystem();
 
 	public RobotContainer() {
 		this.configureDefaultCommands();
@@ -40,10 +41,18 @@ public class RobotContainer {
 		// Conveyor
 		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_BUTTON)
 			.whileHeld(new MoveConveyorCommand(this.conveyorSubsystem));
+
+		// Reverse Conveyor
+		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_REVERSE_BUTTON)
+			.whileHeld(new MoveConveyorReverseCommand(this.conveyorSubsystem));
 		
 		// Shoot
 		new JoystickButton(this.operatorHid, SHOOT_BUTTON)
 			.whileHeld(new ShootCommand(this.shootSubsystem));
+
+		// Fix Hopper Jam
+		new JoystickButton(this.operatorHid, JAM_BUTTON)
+			.whileHeld(new FixJamCommand(this.jamFixSubsystem));
 	}
 
 	public Command getAutonomousCommand() {

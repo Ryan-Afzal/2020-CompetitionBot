@@ -35,7 +35,7 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void startIntake() {
-        this.intakeMotor.set(0.1);
+        this.intakeMotor.set(1.0);
     }
 
     public void stopIntake() {

@@ -9,9 +9,10 @@ public final class Constants {
 
 	public static final int TOGGLE_INTAKE_BUTTON = 12;
 	public static final int INTAKE_BUTTON = 11;
-	public static final int JAM_BUTTON = 9;
+	public static final int JAM_BUTTON = 10;
 	
 	public static final int MOVE_CONVEYOR_BUTTON = 1;
+	public static final int MOVE_CONVEYOR_REVERSE_BUTTON = 9;
 	
 	public static final int SHOOT_BUTTON = 2;
 
@@ -37,8 +38,8 @@ public final class Constants {
 	 * Unused
 	 */
 
-	public static final int CLIMB_DEPLOY = 6;
-	public static final int CLIMB_RETRACT = 7;
+	public static final int CLIMB_DEPLOY = -1;
+	public static final int CLIMB_RETRACT = -1;
 
 	/*
 	 * CAN IDs
@@ -51,5 +52,6 @@ public final class Constants {
 	public static final int FRONT_CONVEYOR_MOTOR = 17;
 	public static final int BACK_CONVEYOR_MOTOR = 18;
 	public static final int INTAKE_MOTOR = 19;
+	public static final int JAM_FIX_MOTOR = 20;
 
 }

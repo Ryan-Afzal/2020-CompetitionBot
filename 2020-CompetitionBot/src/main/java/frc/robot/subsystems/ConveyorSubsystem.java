@@ -9,17 +9,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ConveyorSubsystem extends SubsystemBase {
 
-    private final WPI_TalonSRX conveyorMotorBack = new WPI_TalonSRX(FRONT_CONVEYOR_MOTOR);
-    private final WPI_TalonSRX conveyorMotorFront = new WPI_TalonSRX(BACK_CONVEYOR_MOTOR);
+    private final WPI_TalonSRX conveyorMotorFront = new WPI_TalonSRX(FRONT_CONVEYOR_MOTOR);
+    private final WPI_TalonSRX conveyorMotorBack = new WPI_TalonSRX(BACK_CONVEYOR_MOTOR);
 
     private final SpeedControllerGroup motors = new SpeedControllerGroup(this.conveyorMotorFront, this.conveyorMotorBack);
 
     public ConveyorSubsystem() {
-        
+        this.conveyorMotorFront.setInverted(true);
     }
 
     public void startConveyor() {
         this.motors.set(1.0);
+    }
+
+    public void startConveyorReverse() {
+        this.motors.set(-1.0);
     }
 
     public void stopConveyor() {
