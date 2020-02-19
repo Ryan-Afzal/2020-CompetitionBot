@@ -15,7 +15,7 @@ public class JamFixSubsystem extends SubsystemBase {
 	}
 
 	public void startFix() {
-		this.motor.set(1.0);
+		this.motor.set(-0.3);
 	}
 
 	public void stopFix() {
