@@ -26,7 +26,7 @@ public class DriveTrainCurvatureDefaultCommand extends CommandBase {
     public void execute() {
         double forwardBack = this.driveHid1.getY();
         double leftRight = this.driveHid2.getX();
-
+        
         this.driveTrainSubsystem.curvatureDrive(forwardBack, leftRight, this.driveHid2.getRawButton(QUICKTURN_BUTTON));
     }
 
