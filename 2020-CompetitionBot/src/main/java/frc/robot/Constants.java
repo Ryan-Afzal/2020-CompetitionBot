@@ -57,4 +57,12 @@ public final class Constants {
 	public static final int INTAKE_MOTOR = 19;
 	public static final int JAM_FIX_MOTOR = 20;
 
+	/*
+	 * Smart Dashboard
+	 */
+	public static final String LEFT_FRONT_DRIVE_MOTOR_KEY = "Left Front";
+	public static final String LEFT_BACK_DRIVE_MOTOR_KEY = "Left Back";
+	public static final String RIGHT_FRONT_DRIVE_MOTOR_KEY = "Right Front";
+	public static final String RIGHT_BACK_DRIVE_MOTOR_KEY = "Right Back";
+
 }

@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
@@ -47,7 +48,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        
+        // Smart Dashboard Test
+        SmartDashboard.putData(LEFT_FRONT_DRIVE_MOTOR_KEY, this.l1);
+        SmartDashboard.putData(LEFT_BACK_DRIVE_MOTOR_KEY, this.l2);
+        SmartDashboard.putData(RIGHT_FRONT_DRIVE_MOTOR_KEY, this.r1);
+        SmartDashboard.putData(RIGHT_BACK_DRIVE_MOTOR_KEY, this.r2);
     }
 
     public void arcadeDrive(double forwardBack, double leftRight) {
