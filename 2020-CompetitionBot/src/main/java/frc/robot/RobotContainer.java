@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
+@SuppressWarnings("unused")
 public class RobotContainer {
 
 	private final GenericHID driveHid1 = new Joystick(DRIVE_HID_1);
@@ -20,6 +21,7 @@ public class RobotContainer {
 	private final ConveyorSubsystem conveyorSubsystem = new ConveyorSubsystem();
 	private final ShootSubsystem shootSubsystem = new ShootSubsystem();
 	private final JamFixSubsystem jamFixSubsystem = new JamFixSubsystem();
+	private final CameraSubsystem cameraSubsystem = new CameraSubsystem();
 
 	public RobotContainer() {
 		this.configureDefaultCommands();

@@ -58,11 +58,12 @@ public final class Constants {
 	public static final int JAM_FIX_MOTOR = 20;
 
 	/*
-	 * Smart Dashboard
+	 * Shuffleboard
 	 */
-	public static final String LEFT_FRONT_DRIVE_MOTOR_KEY = "Left Front";
-	public static final String LEFT_BACK_DRIVE_MOTOR_KEY = "Left Back";
-	public static final String RIGHT_FRONT_DRIVE_MOTOR_KEY = "Right Front";
-	public static final String RIGHT_BACK_DRIVE_MOTOR_KEY = "Right Back";
+	
+	public static final String TAB_KEY = "2020-Competition";
+
+	public static final String DRIVETRAIN_KEY = "Drivetrain Status";
+	public static final String INTAKE_DEPLOY_KEY = "Intake Status";
 
 }

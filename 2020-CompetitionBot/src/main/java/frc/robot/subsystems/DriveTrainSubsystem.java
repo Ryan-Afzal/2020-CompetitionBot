@@ -6,8 +6,10 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 /**
  * Drivetrain subsystem that uses an Arcade Drive.
@@ -39,20 +41,24 @@ public class DriveTrainSubsystem extends SubsystemBase {
      * Contruct an instance of the drivetrain.
      */
     public DriveTrainSubsystem() {
+        this.l1.configFactoryDefault();
+        this.l2.configFactoryDefault();
+        this.r1.configFactoryDefault();
+        this.r2.configFactoryDefault();
+
         this.leftControllerGroup.setInverted(true);
         this.rightControllerGroup.setInverted(true);
 
         this.leftEncoder.setDistancePerPulse(DISTANCE_PER_PULSE);
         this.rightEncoder.setDistancePerPulse(DISTANCE_PER_PULSE);
+
+        Shuffleboard.getTab(TAB_KEY)
+            .add(DRIVETRAIN_KEY, this.differentialDrive);
     }
 
     @Override
     public void periodic() {
-        // Smart Dashboard Test
-        SmartDashboard.putData(LEFT_FRONT_DRIVE_MOTOR_KEY, this.l1);
-        SmartDashboard.putData(LEFT_BACK_DRIVE_MOTOR_KEY, this.l2);
-        SmartDashboard.putData(RIGHT_FRONT_DRIVE_MOTOR_KEY, this.r1);
-        SmartDashboard.putData(RIGHT_BACK_DRIVE_MOTOR_KEY, this.r2);
+        
     }
 
     public void arcadeDrive(double forwardBack, double leftRight) {
