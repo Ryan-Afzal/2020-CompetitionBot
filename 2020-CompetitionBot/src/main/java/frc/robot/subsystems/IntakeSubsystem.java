@@ -29,9 +29,6 @@ public class IntakeSubsystem extends SubsystemBase {
             this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
             this.intakeSolenoidRight.set(DoubleSolenoid.Value.kForward);
         }
-
-        Shuffleboard.getTab(TAB_KEY)
-            .add(INTAKE_DEPLOY_KEY, this.intakeSolenoidLeft.get());
     }
 
     public void stopIntakeDeploy() {
