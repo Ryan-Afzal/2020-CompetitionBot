@@ -64,15 +64,15 @@ public class RobotContainer {
 	}
 
 	public Command getAutonomousCommand() {
-		return new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem)
+		return new InstantCommand(() -> System.out.println("Auto Started"))
+			.andThen(new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem))
 			.andThen(new WaitUntilCommand(() -> this.shootSubsystem.getCurrentSpeed() <= this.shootSubsystem.getTargetSpeed()))
 			.andThen(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3))
 			.andThen(new InstantCommand(() -> this.shootSubsystem.stopShoot(), this.shootSubsystem))
 			.andThen(new DriveDistanceCommand(this.driveTrain, 4 * 12))
-			.andThen(new InstantCommand(() -> System.out.println("Ended")));
+			.andThen(new InstantCommand(() -> System.out.println("Auto Ended")));
 			
-			// Next:
-			// 1. Turn around.
+			// Next Turn around.
 	}
 
 	public void onDisable() {
