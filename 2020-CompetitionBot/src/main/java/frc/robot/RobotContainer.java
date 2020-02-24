@@ -42,9 +42,13 @@ public class RobotContainer {
 		new JoystickButton(this.operatorHid, INTAKE_BUTTON)
 			.whileHeld(new IntakeCommand(this.intakeSubsystem));
 
+		// Reverse Intake
+		new JoystickButton(this.operatorHid, INTAKE_REVERSE_BUTTON)
+			.whileHeld(new IntakeReverseCommand(this.intakeSubsystem));
+
 		// Conveyor
 		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_BUTTON)
-			.whileHeld(new MoveConveyorCommand(this.conveyorSubsystem));
+			.whileHeld(new ConveyorAndJamCommand(this.conveyorSubsystem, this.jamFixSubsystem));
 
 		// Reverse Conveyor
 		new JoystickButton(this.operatorHid, MOVE_CONVEYOR_REVERSE_BUTTON)
@@ -55,12 +59,20 @@ public class RobotContainer {
 			.whileHeld(new ShootCommand(this.shootSubsystem));
 
 		// Fix Hopper Jam
-		new JoystickButton(this.operatorHid, JAM_BUTTON)
-			.whileHeld(new FixJamCommand(this.jamFixSubsystem));
+		/*new JoystickButton(this.operatorHid, JAM_BUTTON)
+			.whileHeld(new FixJamCommand(this.jamFixSubsystem));*/
 	}
 
 	public Command getAutonomousCommand() {
-		return null;
+		return new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem)
+			.andThen(new WaitUntilCommand(() -> this.shootSubsystem.getCurrentSpeed() <= this.shootSubsystem.getTargetSpeed()))
+			.andThen(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3))
+			.andThen(new InstantCommand(() -> this.shootSubsystem.stopShoot(), this.shootSubsystem))
+			.andThen(new DriveDistanceCommand(this.driveTrain, 4 * 12))
+			.andThen(new InstantCommand(() -> System.out.println("Ended")));
+			
+			// Next:
+			// 1. Turn around.
 	}
 
 	public void onDisable() {

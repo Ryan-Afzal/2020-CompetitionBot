@@ -6,6 +6,7 @@ import frc.robot.subsystems.ConveyorSubsystem;
 public class MoveConveyorCommand extends CommandBase {
 
     private final ConveyorSubsystem conveyorSubsystem;
+    
 
     public MoveConveyorCommand(ConveyorSubsystem conveyorSubsystem) {
         this.conveyorSubsystem = conveyorSubsystem;
@@ -25,5 +26,6 @@ public class MoveConveyorCommand extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         this.conveyorSubsystem.stopConveyor();
+
     }
 }

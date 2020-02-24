@@ -7,19 +7,19 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 
 /**
  * Drivetrain subsystem that uses an Arcade Drive.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
 
+    public static final double GEAR_RATIO = 1 / 10.0;
+
     /**
-     * The distance (IN INCHES) per encoder pulse. Equal to {@value 19.25π / 200 in};
+     * The distance (IN INCHES) per encoder pulse. Equal to {@value 19.25π / 200 in} multiplied by the {@link GEAR_RATIO};
      */
-     public static final double DISTANCE_PER_PULSE = (19.25 * Math.PI) / 200;
+    public static final double DISTANCE_PER_PULSE = ((19.25 * Math.PI) / 200) * GEAR_RATIO * (48 / 21.89);
 
     public static final double MOTOR_COEFFICIENT_FORWARDBACK = 1.0;
     public static final double MOTOR_COEFFICIENT_LEFTRIGHT = -1.0;
@@ -74,7 +74,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
      * @return Returns the total recorded distance
      */
     public double getLeftEncoderDistance() {
-        return this.leftEncoder.getDistance();
+        return -this.leftEncoder.getDistance();
     }
 
     /**
@@ -82,15 +82,15 @@ public class DriveTrainSubsystem extends SubsystemBase {
      * @return Returns the total recorded distance
      */
     public double getRightEncoderDistance() {
-        return this.rightEncoder.getDistance();
+        return -this.rightEncoder.getDistance();
     }
 
     public double getLeftEncoderRate() {
-        return this.leftEncoder.getRate();
+        return -this.leftEncoder.getRate();
     }
 
     public double getRightEncoderRate() {
-        return this.rightEncoder.getRate();
+        return -this.rightEncoder.getRate();
     }
     
 }

@@ -10,14 +10,15 @@ public final class Constants {
 
 	public static final int QUICKTURN_BUTTON = 1;
 
-	public static final int TOGGLE_INTAKE_BUTTON = 12;
+	public static final int TOGGLE_INTAKE_BUTTON = 2;
 	public static final int INTAKE_BUTTON = 11;
-	public static final int JAM_BUTTON = 10;
+	public static final int INTAKE_REVERSE_BUTTON = 12;
+	public static final int JAM_BUTTON = 9;
 	
-	public static final int MOVE_CONVEYOR_BUTTON = 1;
-	public static final int MOVE_CONVEYOR_REVERSE_BUTTON = 9;
+	public static final int MOVE_CONVEYOR_BUTTON = 6;
+	public static final int MOVE_CONVEYOR_REVERSE_BUTTON = 4;
 	
-	public static final int SHOOT_BUTTON = 2;
+	public static final int SHOOT_BUTTON = 1;
 
 	/*
 	 * Unused
@@ -62,6 +63,9 @@ public final class Constants {
 	 */
 	
 	public static final String TAB_KEY = "2020-Competition";
+
+	public static final String INTAKE_CAMERA_KEY = "Intake Camera";
+	public static final String SHOOTER_CAMERA_KEY = "Shooter Camera";
 
 	public static final String DRIVETRAIN_KEY = "Drivetrain Status";
 	public static final String INTAKE_DEPLOY_KEY = "Intake Status";

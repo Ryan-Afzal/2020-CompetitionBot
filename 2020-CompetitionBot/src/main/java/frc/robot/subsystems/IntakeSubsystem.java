@@ -17,8 +17,8 @@ public class IntakeSubsystem extends SubsystemBase {
     private final DoubleSolenoid intakeSolenoidRight = new DoubleSolenoid(INTAKE_DEPLOY_RIGHT, INTAKE_RETRACT_RIGHT);
 
     public IntakeSubsystem() {
-        this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kReverse);
-        this.intakeSolenoidRight.set(DoubleSolenoid.Value.kReverse);
+        this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
+        this.intakeSolenoidRight.set(DoubleSolenoid.Value.kForward);
     }
 
     public void toggleIntakeDeploy() {
@@ -38,6 +38,10 @@ public class IntakeSubsystem extends SubsystemBase {
 
     public void startIntake() {
         this.intakeMotor.set(1.0);
+    }
+
+    public void reverseIntake() {
+        this.intakeMotor.set(-1.0);
     }
 
     public void stopIntake() {
