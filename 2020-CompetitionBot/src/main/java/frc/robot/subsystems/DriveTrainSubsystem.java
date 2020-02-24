@@ -66,6 +66,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
     }
 
     public void curvatureDrive(double forwardBack, double leftRight, boolean quickTurn) {
+        if (forwardBack < 0) {
+            leftRight = -leftRight;
+        }
+
         this.differentialDrive.curvatureDrive(MOTOR_COEFFICIENT_FORWARDBACK * forwardBack, MOTOR_COEFFICIENT_LEFTRIGHT * leftRight, quickTurn);
     }
 

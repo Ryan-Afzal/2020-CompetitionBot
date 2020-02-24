@@ -3,6 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
+/**
+ * Runs the conveyor to shoot {@value N} balls.
+ */
 public class AutoRunConveyorToShootNBallsCommand extends CommandBase {
 
 	private final ConveyorSubsystem conveyorSubsystem;

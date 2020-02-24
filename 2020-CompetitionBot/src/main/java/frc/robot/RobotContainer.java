@@ -4,6 +4,7 @@ import static frc.robot.Constants.*;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -26,6 +27,8 @@ public class RobotContainer {
 	public RobotContainer() {
 		this.configureDefaultCommands();
 		this.configureButtonBindings();
+		
+		Shuffleboard.update();
 	}
 
 	private void configureDefaultCommands() {
@@ -64,15 +67,15 @@ public class RobotContainer {
 	}
 
 	public Command getAutonomousCommand() {
-		return new InstantCommand(() -> System.out.println("Auto Started"))
-			.andThen(new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem))
-			.andThen(new WaitUntilCommand(() -> this.shootSubsystem.getCurrentSpeed() <= this.shootSubsystem.getTargetSpeed()))
-			.andThen(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3))
-			.andThen(new InstantCommand(() -> this.shootSubsystem.stopShoot(), this.shootSubsystem))
-			.andThen(new DriveDistanceCommand(this.driveTrain, 4 * 12))
-			.andThen(new InstantCommand(() -> System.out.println("Auto Ended")));
+		return new InstantCommand(() -> System.out.println("Auto Started"))// Start
+			.andThen(new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem))// Start shooter
+			.andThen(new WaitUntilCommand(() -> this.shootSubsystem.getCurrentSpeed() <= this.shootSubsystem.getTargetSpeed()))// Wait for shooter to come up to full speed
+			.andThen(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3))// Run conveyor to fire N balls
+			.andThen(new InstantCommand(() -> this.shootSubsystem.stopShoot(), this.shootSubsystem))// Stop shooter
+			.andThen(new DriveDistanceCommand(this.driveTrain, 4 * 12))// Drive backwards
+			.andThen(new InstantCommand(() -> System.out.println("Auto Ended")));// End
 			
-			// Next Turn around.
+			// Next: Turn Around.
 	}
 
 	public void onDisable() {

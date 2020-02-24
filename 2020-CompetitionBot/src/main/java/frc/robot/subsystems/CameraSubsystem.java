@@ -20,15 +20,9 @@ public class CameraSubsystem extends SubsystemBase {
 
 		Shuffleboard.getTab(TAB_KEY)
 			.add(INTAKE_CAMERA_KEY, this.intakeCamera);
+			
 		Shuffleboard.getTab(TAB_KEY)
 			.add(SHOOTER_CAMERA_KEY, this.shooterCamera);
-	}
-
-	public UsbCamera getIntakeCamera() {
-		return this.intakeCamera;
-	}
-	public UsbCamera getShooterCamera() {
-		return this.shooterCamera;
 	}
 
 }
