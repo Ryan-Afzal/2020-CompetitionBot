@@ -27,8 +27,6 @@ public class RobotContainer {
 	public RobotContainer() {
 		this.configureDefaultCommands();
 		this.configureButtonBindings();
-		
-		Shuffleboard.update();
 	}
 
 	private void configureDefaultCommands() {

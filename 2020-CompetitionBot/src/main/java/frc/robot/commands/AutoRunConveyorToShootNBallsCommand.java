@@ -39,8 +39,6 @@ public class AutoRunConveyorToShootNBallsCommand extends CommandBase {
 			if (!this.isCounted) {
 				this.counter++;
 				this.isCounted = true;
-
-				System.out.println("You have been shot");
 			}
 		} else {
 			this.isCounted = false;
