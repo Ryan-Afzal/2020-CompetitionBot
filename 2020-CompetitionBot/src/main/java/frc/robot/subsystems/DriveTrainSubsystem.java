@@ -66,7 +66,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
     }
 
     public void curvatureDrive(double forwardBack, double leftRight, boolean quickTurn) {
-        if (forwardBack < 0) {
+        if (forwardBack > 0) {
             leftRight = -leftRight;
         }
 

@@ -15,20 +15,15 @@ public class DriveTrainCurvatureDefaultCommand extends CommandBase {
     private final GenericHID driveHid1;
     private final GenericHID driveHid2;
 
-    private final double initialDistance;
-
     public DriveTrainCurvatureDefaultCommand(DriveTrainSubsystem driveTrainSubsystem, GenericHID driveHid1, GenericHID driveHid2) {
         this.driveTrainSubsystem = driveTrainSubsystem;
         this.driveHid1 = driveHid1;
         this.driveHid2 = driveHid2;
         this.addRequirements(this.driveTrainSubsystem);
-
-        this.initialDistance = this.driveTrainSubsystem.getLeftEncoderDistance();
     }
 
     @Override
     public void execute() {
-        System.out.println(this.driveTrainSubsystem.getLeftEncoderDistance() - this.initialDistance);
         double forwardBack = this.driveHid1.getY();
         double leftRight = this.driveHid2.getX();
 
