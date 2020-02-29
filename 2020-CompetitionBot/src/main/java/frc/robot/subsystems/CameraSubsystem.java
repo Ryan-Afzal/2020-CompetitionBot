@@ -13,8 +13,8 @@ public class CameraSubsystem extends SubsystemBase {
 	private UsbCamera shooterCamera;
 
 	public CameraSubsystem() {
-		//this.initIntakeCamera();
-		//this.initShooterCamera();
+		this.initIntakeCamera();
+		this.initShooterCamera();
 	}
 
 	private void initIntakeCamera() {

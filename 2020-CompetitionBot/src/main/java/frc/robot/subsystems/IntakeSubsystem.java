@@ -15,18 +15,22 @@ public class IntakeSubsystem extends SubsystemBase {
     private final DoubleSolenoid intakeSolenoidRight = new DoubleSolenoid(INTAKE_DEPLOY_RIGHT, INTAKE_RETRACT_RIGHT);
 
     public IntakeSubsystem() {
-        this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
-        this.intakeSolenoidRight.set(DoubleSolenoid.Value.kForward);
+        //this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
+        //this.intakeSolenoidRight.set(DoubleSolenoid.Value.kForward);
     }
 
     public void toggleIntakeDeploy() {
         if (this.intakeSolenoidLeft.get() == DoubleSolenoid.Value.kForward) {
-            this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kReverse);
-            this.intakeSolenoidRight.set(DoubleSolenoid.Value.kReverse);
+            this.setIntakeDeploy(DoubleSolenoid.Value.kReverse);
+            this.setIntakeDeploy(DoubleSolenoid.Value.kReverse);
         } else {
-            this.intakeSolenoidLeft.set(DoubleSolenoid.Value.kForward);
-            this.intakeSolenoidRight.set(DoubleSolenoid.Value.kForward);
+            this.setIntakeDeploy(DoubleSolenoid.Value.kForward);
         }
+    }
+
+    public void setIntakeDeploy(DoubleSolenoid.Value value) {
+        this.intakeSolenoidLeft.set(value);
+        this.intakeSolenoidRight.set(value);
     }
 
     public void stopIntakeDeploy() {
