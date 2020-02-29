@@ -21,8 +21,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
      */
     public static final double DISTANCE_PER_PULSE = ((19.25 * Math.PI) / 200) * GEAR_RATIO * (48 / 21.89);
 
-    public static final double MOTOR_COEFFICIENT_FORWARDBACK = 1.0;
-    public static final double MOTOR_COEFFICIENT_LEFTRIGHT = 1.0;
+    public static final double MOTOR_COEFFICIENT_FORWARDBACK = -1.0;
+    public static final double MOTOR_COEFFICIENT_LEFTRIGHT = -1.0;
 
     private final WPI_TalonSRX l1 = new WPI_TalonSRX(LEFT_FRONT_DRIVE_MOTOR);
     private final WPI_TalonSRX l2 = new WPI_TalonSRX(LEFT_BACK_DRIVE_MOTOR);
