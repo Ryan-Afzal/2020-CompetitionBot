@@ -34,7 +34,7 @@ public class DriveDistanceCommand extends CommandBase {
         if (!this.isFinished && this.driveTrainSubsystem.getLeftEncoderDistance() - this.initialDistance >= this.targetDistance) {
             this.isFinished = true;
         } else {
-            this.driveTrainSubsystem.arcadeDrive(0.5, 0.0);
+            this.driveTrainSubsystem.arcadeDrive(-0.5, 0.0);
         }
     }
     

@@ -52,8 +52,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
         this.leftEncoder.setDistancePerPulse(DISTANCE_PER_PULSE);
         this.rightEncoder.setDistancePerPulse(DISTANCE_PER_PULSE);
 
-        Shuffleboard.getTab(TAB_KEY)
-            .add(DRIVETRAIN_KEY, this.differentialDrive);
+        //Shuffleboard.getTab(TAB_KEY)
+        //    .add(DRIVETRAIN_KEY, this.differentialDrive);
     }
 
     @Override

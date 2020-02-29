@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.*;
 
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -24,7 +25,10 @@ public class CameraSubsystem extends SubsystemBase {
 		this.intakeCamera.setFPS(20);
 
 		Shuffleboard.getTab(TAB_KEY)
-			.add(INTAKE_CAMERA_KEY, this.intakeCamera);
+			.add(INTAKE_CAMERA_KEY, this.intakeCamera)
+			.withSize(5, 4)
+			.withPosition(0, 0)
+			;
 	}
 
 	private void initShooterCamera() {
@@ -34,7 +38,10 @@ public class CameraSubsystem extends SubsystemBase {
 		this.shooterCamera.setFPS(20);
 			
 		Shuffleboard.getTab(TAB_KEY)
-			.add(SHOOTER_CAMERA_KEY, this.shooterCamera);
+			.add(SHOOTER_CAMERA_KEY, this.shooterCamera)
+			.withSize(4, 4)
+			.withPosition(5, 0)
+			;
 	}
 
 }
