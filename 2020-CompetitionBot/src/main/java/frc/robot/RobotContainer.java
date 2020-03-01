@@ -70,7 +70,11 @@ public class RobotContainer {
 			.andThen(new InstantCommand(() -> this.intakeSubsystem.setIntakeDeploy(DoubleSolenoid.Value.kReverse)))
 			.andThen(new InstantCommand(() -> this.shootSubsystem.startShoot(), this.shootSubsystem))// Start shooter
 			.andThen(new WaitUntilCommand(() -> this.shootSubsystem.getCurrentSpeed() <= this.shootSubsystem.getTargetSpeed()))// Wait for shooter to come up to full speed
-			.andThen(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3).raceWith(new WaitCommand(10)))// Run conveyor to fire N balls OR 10 seconds
+			.andThen(new InstantCommand(() -> this.conveyorSubsystem.startConveyor(), this.conveyorSubsystem))// Start conveyor
+			.andThen(new WaitCommand(10)
+				//.raceWith(new AutoRunConveyorToShootNBallsCommand(this.conveyorSubsystem, this.shootSubsystem, 3))
+				)// Run conveyor to fire N balls OR 10 seconds
+			.andThen(new InstantCommand(() -> this.conveyorSubsystem.stopConveyor(), this.conveyorSubsystem))// Stop Conveyor
 			.andThen(new InstantCommand(() -> this.shootSubsystem.stopShoot(), this.shootSubsystem))// Stop shooter
 			.andThen(new DriveDistanceCommand(this.driveTrain, 4 * 12))// Drive backwards
 			.andThen(new InstantCommand(() -> System.out.println("Auto Ended")));// End

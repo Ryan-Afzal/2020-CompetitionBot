@@ -26,7 +26,7 @@ public class CameraSubsystem extends SubsystemBase {
 
 		Shuffleboard.getTab(TAB_KEY)
 			.add(INTAKE_CAMERA_KEY, this.intakeCamera)
-			.withSize(5, 4)
+			.withSize(5, 3)
 			.withPosition(0, 0)
 			;
 	}
@@ -39,7 +39,7 @@ public class CameraSubsystem extends SubsystemBase {
 			
 		Shuffleboard.getTab(TAB_KEY)
 			.add(SHOOTER_CAMERA_KEY, this.shooterCamera)
-			.withSize(4, 4)
+			.withSize(4, 3)
 			.withPosition(5, 0)
 			;
 	}
